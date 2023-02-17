@@ -3,7 +3,7 @@ import yfinance as yf
 
 
 def main():
-    # get users input
+    # get users input this is to test some of the code
     ticker = input("Ticker: ").strip().upper()
     years = int(input("Number of Years: ").strip())
 
