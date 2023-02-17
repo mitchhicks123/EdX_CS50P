@@ -1,6 +1,5 @@
 # this file will be used as a library for final_project.py
 
-
 # yfiance might seems quite unpredictable and was down check link for fix: https://github.com/ranaroussi/yfinance/issues/1407
 # import yfinance as yf
 import json
