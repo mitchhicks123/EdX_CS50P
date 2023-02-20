@@ -4,24 +4,20 @@
 # import yfinance as yf
 import json
 import requests
+import api
 
 
-class Stock:
-    def __init__(self, ticker, revenue, gross_profit, op_income, net_in, eps, shareholders_eq, cash_flow, cap_ex):
-        ...
+class Stocks:
+    def __init__(self, ticker):
+        # try and catch ticker symbol
+        self.ticker = ticker
+        # overview
+        self.pe, self.shares_out, self.market_cap = api.get_overview(ticker)
+        self.share_price = int(self.market_cap) / int(self.shares_out)
+        # income statement
+        self.revenue, self.gp, self.op, self.ni = api.get_income(ticker)
+        # Cash Flow Statement
+        # Balance Sheet
 
-
-def get_rev(income):
-    revenue = []
-    for rev in income["annualReports"]:
-        revenue.append(rev["totalRevenue"])
-
-    return revenue
-
-
-def get_gp(income):
-    gp = []
-    for gross_profit in income["annualReports"]:
-        gp.append(gross_profit["grossProfit"])
-
-    return gp
+    def print_all(self):
+        return (f"{self.revenue} \n{self.gp} \n{self.op} \n{self.ni}\n-----\n{self.pe}\n{self.shares_out}\n{self.market_cap}\n{self.share_price}")

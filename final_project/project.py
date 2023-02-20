@@ -1,5 +1,5 @@
-import api
-from stock import Stock
+
+from stock import Stocks
 import yfinance as yf
 
 
@@ -8,11 +8,8 @@ def main():
     ticker = input("Ticker: ").strip().upper()
 
     # pass values in to get data
-    # values.get_data()
-
-    company_info = api.get_data(ticker)
-    Stock()
-    print(company_info)
+    stock = Stocks(ticker)
+    print(stock.print_all())
 
 
 if __name__ == "__main__":
